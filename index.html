@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TATOOA – תראו את הקעקוע לפני שהוא על העור</title>
+<meta name="description" content="אב־טיפוס של TATOOA: הדמיית קעקוע על תמונת הגוף, הערכת מחיר ושליחת בקשה להצעת מחיר לאמני קעקועים.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">דילוג לתוכן</a>
+
+<header class="topbar">
+  <a class="logo" href="#/home" aria-label="TATOOA – דף הבית">TATOO<span>A</span></a>
+  <nav aria-label="ניווט ראשי">
+    <a href="#/home" data-nav="home">בית</a>
+    <a href="#/studio" data-nav="studio">סטודיו הדמיה</a>
+    <a href="#/artist" data-nav="artist">אזור אמנים</a>
+  </nav>
+</header>
+<div class="demo-banner" role="note">אב־טיפוס להדגמה · האמנים, המחירים והתשלומים בדויים</div>
+
+<ol class="stepper" id="stepper" aria-label="שלבי התהליך">
+  <li data-step="studio"><a href="#/studio"><b>1</b> הדמיה</a></li>
+  <li data-step="price"><a href="#/price"><b>2</b> מחיר</a></li>
+  <li data-step="artists"><a href="#/artists"><b>3</b> אמנים</a></li>
+  <li data-step="request"><a href="#/request"><b>4</b> פנייה</a></li>
+</ol>
+
+<main id="main">
+
+  <section class="screen" data-screen="home" aria-labelledby="h-home">
+    <div class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">הדמיית קעקוע · הערכת מחיר · התאמת אמן/ית</p>
+        <h1 id="h-home" tabindex="-1">תראו את הקעקוע<br>לפני שהוא על העור</h1>
+        <p class="intro">מעלים תמונה של אזור הגוף, ממקמים את הסקיצה, מקבלים הערכת מחיר ושולחים בקשה להצעת מחיר לאמנים שמתאימים לסגנון ולתקציב שלכם.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#/studio">להתחיל הדמיה</a>
+          <a class="btn ghost" href="#/artist">אני אמן/ית</a>
+        </div>
+        <p class="fine">ההדמיה והערכת המחיר בחינם.</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <canvas id="heroCanvas" width="800" height="1000"></canvas>
+      </div>
+    </div>
+
+    <h2 class="section-title">איך זה עובד</h2>
+    <ol class="steps">
+      <li><span class="num">1</span><h3>הדמיה על הגוף</h3><p>מעלים תמונה של האמה, הכתף או כל אזור אחר, ובוחרים סקיצה או מעלים אחת משלכם. גוררים, מגדילים ומסובבים עד שזה יושב בדיוק.</p></li>
+      <li><span class="num">2</span><h3>הערכת מחיר</h3><p>לפי גודל, סגנון, מיקום ומורכבות. מכניסים תקציב ומקבלים התראה אם הוא לא ריאלי.</p></li>
+      <li><span class="num">3</span><h3>התאמת אמן/ית</h3><p>3–5 אמנים באזור שלכם עם תיק עבודות מתאים, ובקשה להצעת מחיר שכבר כוללת את כל הפרטים.</p></li>
+    </ol>
+
+    <div class="two-col">
+      <div class="card">
+        <h2>ללקוחות</h2>
+        <ul class="ticks">
+          <li><b>Cover-Up:</b> בודקים אם עיצוב חדש יכסה קעקוע ישן או צלקת.</li>
+          <li><b>שיתוף לחברים:</b> שולחים את ההדמיה לוואטסאפ או לסטורי לפני שמחליטים.</li>
+          <li><b>ביטוח קעקוע:</b> תיקונים בחינם כשקובעים תור דרך האפליקציה.</li>
+          <li>אין תוספת מחיר: המקדמה היא חלק מהמחיר הכולל.</li>
+        </ul>
+      </div>
+      <div class="card dark">
+        <h2>לאמנים ולסטודיואים</h2>
+        <ul class="ticks">
+          <li><b>הצטרפות חינם.</b></li>
+          <li><b>לידים מוכנים:</b> הדמיה, מיקום, גודל, סגנון ותקציב, בלי פינג־פונג.</li>
+          <li><b>מקדמה של 15%</b> בעת קביעת התור, נגד ביטולים והברזות. את 85% הנותרים גובים בסטודיו.</li>
+          <li>סטנסיל נקי ללא סימן מים נפתח אחרי סליקת המקדמה.</li>
+        </ul>
+        <a class="btn ball" href="#/artist">לאזור האמנים</a>
+      </div>
+    </div>
+
+    <h2 class="section-title">בקרוב</h2>
+    <ul class="soon">
+      <li>מיפוי עומק בווידאו / LiDAR</li>
+      <li>התאמת רוויית הדיו לגוון העור</li>
+      <li>מחשבון דהייה: איך הקעקוע ייראה בעוד 5 שנים</li>
+    </ul>
+  </section>
+
+  <section class="screen" data-screen="studio" aria-labelledby="h-studio">
+    <div class="screen-head">
+      <h1 id="h-studio" tabindex="-1">סטודיו הדמיה</h1>
+      <p>בחרו אזור בגוף וסקיצה, ומקמו אותה על התמונה.</p>
+    </div>
+    <div class="studio">
+      <div class="stage">
+        <canvas id="stage" width="800" height="1000" tabindex="0" role="img"
+          aria-label="הדמיית הקעקוע על הגוף. גררו להזזה. במקלדת: חיצים להזזה, פלוס ומינוס לגודל, סוגריים מרובעים לסיבוב."></canvas>
+        <p class="stage-hint">גררו להזזה · צביטה בשתי אצבעות לגודל וסיבוב</p>
+        <p class="size-readout" id="sizeReadout" aria-live="polite"></p>
+      </div>
+
+      <div class="panel">
+        <fieldset>
+          <legend>1. אזור בגוף</legend>
+          <div class="chips" id="bodyChips"></div>
+          <label class="upload">
+            <input type="file" id="bodyFile" accept="image/*">
+            <span>העלאת תמונה של אזור הגוף</span>
+          </label>
+          <div class="tones" id="toneWrap">
+            <span class="mini-label" id="toneLabel">גוון עור (בהדמיה המובנית)</span>
+            <div class="chips" id="toneChips" role="group" aria-labelledby="toneLabel"></div>
+          </div>
+          <label class="check">
+            <input type="checkbox" id="coverUp">
+            <span>כיסוי קעקוע ישן (Cover-Up)</span>
+          </label>
+          <p class="fine" id="coverHint" hidden>טיפ: עיצוב חדש צריך להיות כהה וגדול יותר מהקעקוע הישן. אם הישן עדיין בולט מבעד לעיצוב, נסו בלאקוורק או הגדלה.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. סקיצה</legend>
+          <div class="sketch-grid" id="sketchGrid"></div>
+          <label class="upload">
+            <input type="file" id="sketchFile" accept="image/*">
+            <span>העלאת סקיצה משלי</span>
+          </label>
+          <p class="fine">רקע לבן מוסר אוטומטית.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. סגנון</legend>
+          <div class="chips" id="styleChips"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>4. מיקום וגודל</legend>
+          <label class="field">
+            <span>אזור בגוף (לתמחור)</span>
+            <select id="placement"></select>
+          </label>
+          <label class="field">
+            <span>רוחב האזור שבתמונה, בערך (ס״מ)</span>
+            <input type="number" id="areaCm" min="4" max="80" step="1" inputmode="numeric">
+          </label>
+          <label class="field range">
+            <span>גודל <output id="scaleOut"></output></span>
+            <input type="range" id="scale" min="8" max="90" step="1">
+          </label>
+          <label class="field range">
+            <span>סיבוב <output id="rotOut"></output></span>
+            <input type="range" id="rot" min="-180" max="180" step="1">
+          </label>
+          <label class="field range">
+            <span>שקיפות דיו <output id="opOut"></output></span>
+            <input type="range" id="opacity" min="30" max="100" step="1">
+          </label>
+          <button type="button" class="btn text" id="resetPos">איפוס מיקום</button>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="btn ghost" id="shareBtn">שיתוף לקבלת חוות דעת</button>
+          <a class="btn primary" href="#/price">להערכת מחיר ←</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" data-screen="price" aria-labelledby="h-price">
+    <div class="screen-head">
+      <h1 id="h-price" tabindex="-1">הערכת מחיר</h1>
+      <p>הנתונים מולאו מההדמיה. אפשר לשנות אותם.</p>
+    </div>
+    <div class="price-layout">
+      <form class="card form" id="priceForm" onsubmit="return false">
+        <div class="grid2">
+          <label class="field"><span>רוחב (ס״מ)</span><input type="number" id="pW" min="1" max="80" step="0.5" inputmode="decimal"></label>
+          <label class="field"><span>גובה (ס״מ)</span><input type="number" id="pH" min="1" max="80" step="0.5" inputmode="decimal"></label>
+        </div>
+        <label class="field"><span>אזור בגוף</span><select id="pPlacement"></select></label>
+        <label class="field"><span>סגנון</span><select id="pStyle"></select></label>
+        <label class="field"><span>צבע</span>
+          <select id="pColor"><option value="bw">שחור / אפור</option><option value="color">צבעוני</option></select>
+        </label>
+        <fieldset class="field">
+          <legend>מורכבות</legend>
+          <div class="seg">
+            <label><input type="radio" name="pCx" value="1"><span>פשוט</span></label>
+            <label><input type="radio" name="pCx" value="2"><span>בינוני</span></label>
+            <label><input type="radio" name="pCx" value="3"><span>מורכב</span></label>
+          </div>
+        </fieldset>
+        <label class="check"><input type="checkbox" id="pCover"><span>כיסוי קעקוע ישן (Cover-Up)</span></label>
+        <label class="field"><span>תקציב מקסימלי (₪, לא חובה)</span><input type="number" id="pBudget" min="0" step="50" inputmode="numeric" placeholder="למשל 800"></label>
+      </form>
+
+      <div class="card result" aria-live="polite">
+        <p class="mini-label">טווח מחיר משוער</p>
+        <p class="range-big" id="priceRange"></p>
+        <ul class="breakdown" id="priceBreakdown"></ul>
+        <div class="alert" id="budgetAlert" hidden></div>
+        <p class="fine">הערכה לפי טבלת מחירים זמנית להדגמה. בפיילוט היא תתבסס על סקר מחירים של כ־50 אמנים, ואחר כך על מאגר שמתעדכן אוטומטית. המחיר הסופי נקבע על ידי האמן/ית.</p>
+        <div class="actions">
+          <a class="btn ghost" href="#/studio">→ חזרה להדמיה</a>
+          <a class="btn primary" href="#/artists">מצאו לי אמנים ←</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" data-screen="artists" aria-labelledby="h-artists">
+    <div class="screen-head">
+      <h1 id="h-artists" tabindex="-1">אמנים שמתאימים לכם</h1>
+      <p id="artistsIntro"></p>
+    </div>
+    <div class="artist-list" id="artistList"></div>
+    <div class="actions start">
+      <a class="btn ghost" href="#/price">→ חזרה למחיר</a>
+    </div>
+  </section>
+
+  <section class="screen" data-screen="request" aria-labelledby="h-request">
+    <div class="screen-head">
+      <h1 id="h-request" tabindex="-1">בקשה להצעת מחיר</h1>
+      <p>האמן/ית יקבל/תקבל את ההדמיה, הגודל, הסגנון והתקציב.</p>
+    </div>
+    <div class="request-layout">
+      <aside class="card summary" id="requestSummary"></aside>
+      <form class="card form" id="requestForm" novalidate>
+        <label class="field"><span>שם מלא</span><input type="text" id="rName" autocomplete="name" required></label>
+        <label class="field"><span>טלפון</span><input type="tel" id="rPhone" autocomplete="tel" inputmode="tel" required pattern="[0-9+\-\s]{9,15}"></label>
+        <label class="field"><span>עיר</span><input type="text" id="rCity" autocomplete="address-level2"></label>
+        <label class="field"><span>מועדים מועדפים</span><input type="text" id="rDates" placeholder="למשל: ימי שלישי אחה״צ, אחרי ה־1 בחודש"></label>
+        <label class="field"><span>הערות לאמן/ית</span><textarea id="rNotes" rows="3" placeholder="השראה, אלרגיות ידועות, שאלות…"></textarea></label>
+
+        <div class="deposit" id="depositBox"></div>
+
+        <label class="check"><input type="checkbox" id="rAge" required><span>אני בן/בת 18 ומעלה.</span></label>
+        <label class="check"><input type="checkbox" id="rTerms" required>
+          <span>קראתי ואני מסכים/ה: ההדמיה והסקיצות נועדו להשראה בלבד ואינן התחייבות לתוצאה. ההדמיה אינה מחליפה ייעוץ רפואי לגבי אלרגיה לדיו או צלקות קיימות.</span>
+        </label>
+        <p class="error" id="requestError" role="alert" hidden></p>
+        <div class="actions">
+          <a class="btn ghost" href="#/artists">→ חזרה לאמנים</a>
+          <button type="submit" class="btn primary">שליחת בקשה</button>
+        </div>
+        <p class="fine">לא נגבה תשלום עכשיו. המקדמה נגבית רק אם האמן/ית מאשר/ת את התור.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="screen" data-screen="done" aria-labelledby="h-done">
+    <div class="done card">
+      <div class="done-mark" aria-hidden="true">✓</div>
+      <h1 id="h-done" tabindex="-1">הבקשה נשלחה</h1>
+      <div id="doneSummary"></div>
+      <div class="actions center">
+        <a class="btn primary" href="#/artist">ראו איך האמן/ית מקבל/ת את הפנייה</a>
+        <a class="btn ghost" href="#/studio">הדמיה חדשה</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" data-screen="artist" aria-labelledby="h-artist">
+    <div class="screen-head">
+      <h1 id="h-artist" tabindex="-1">אזור אמנים: פניות נכנסות</h1>
+      <p>כל פנייה מגיעה כ"תיק לקוח": הדמיה, גודל, סגנון ותקציב.</p>
+    </div>
+    <div class="inbox-bar">
+      <label class="field inline"><span>אני:</span><select id="artistSelect"></select></label>
+      <div class="stats" id="inboxStats"></div>
+    </div>
+    <div class="lead-list" id="leadList"></div>
+    <div class="empty card" id="leadEmpty" hidden>
+      <h2>אין עדיין פניות</h2>
+      <p>עשו הדמיה כלקוח/ה ושלחו בקשה להצעת מחיר. היא תופיע כאן.</p>
+      <a class="btn primary" href="#/studio">להדמיה</a>
+    </div>
+    <p class="fine">הצטרפות חינם. אימות רישיון עסק, יומן מלא וסליקת מקדמה בתוך האפליקציה יתווספו אחרי שלב ה־MVP. כאן הם מוצגים כסימולציה.</p>
+    <button type="button" class="btn text danger" id="clearDemo">מחיקת נתוני ההדגמה</button>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p><b>TATOOA</b> · אב־טיפוס של קבוצה 12: תומר ברק, שוהם אטיאס ושירי שלל</p>
+  <p class="fine">הסקיצות וההדמיות להשראה בלבד. השימוש מגיל 18. ההדמיה אינה מחליפה ייעוץ רפואי.</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>

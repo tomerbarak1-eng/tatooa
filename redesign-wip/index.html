@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0c0e14">
+<title>TATOOA – הדמיית קעקוע והתאמת מקעקע</title>
+<meta name="description" content="אב־טיפוס של TATOOA: הדמיית קעקוע על הגוף, הערכת מחיר, התאמת מקעקע וניהול לידים לאמנים.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..600,0..1,0&display=block" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">דילוג לתוכן</a>
+<div class="app">
+
+  <!-- ===== TOP BAR ===== -->
+  <header class="topbar">
+    <div class="brand">
+      <button type="button" class="icon-btn back" id="backBtn" hidden aria-label="חזרה"><span class="ms" aria-hidden="true">arrow_forward</span></button>
+      <a href="#/home" class="logo" aria-label="TATOOA – דף הבית"><span class="logo-mark" aria-hidden="true">T</span></a>
+      <div class="brand-text">
+        <span class="brand-name">TATOO<b>A</b></span>
+        <span class="brand-sub" id="screenSub">Discovery Feed</span>
+      </div>
+    </div>
+    <div class="top-actions">
+      <div class="role-toggle" role="group" aria-label="מצב משתמש">
+        <button type="button" data-role="artist" aria-pressed="false"><span class="ms" aria-hidden="true">brush</span>אמן</button>
+        <button type="button" data-role="client" aria-pressed="true"><span class="ms" aria-hidden="true">person</span>מתקעקע</button>
+      </div>
+      <a href="#/profile" class="avatar-dot" aria-label="הפרופיל שלי"><span aria-hidden="true">ת</span></a>
+    </div>
+  </header>
+  <div class="demo-banner" role="note">אב־טיפוס להדגמה · אמנים, מחירים, תשלומים ומדדי AR בדויים</div>
+
+  <main id="main">
+
+    <!-- ===== 1. DISCOVERY ===== -->
+    <section class="screen" data-screen="home" aria-labelledby="h-home">
+      <div class="hero-card glow">
+        <div class="row between">
+          <span class="pill-dark"><i class="dot pulse"></i>AR TRY-ON · MVP</span>
+          <span class="ms c-cyan" aria-hidden="true">view_in_ar</span>
+        </div>
+        <h1 id="h-home" tabindex="-1">תראו את הקעקוע על העור שלכם לפני המחט הראשונה</h1>
+        <p class="muted">מעלים תמונה של אזור הגוף, ממקמים סקיצה, מקבלים הערכת מחיר ו־3–5 מקעקעים שמתאימים לסגנון ולתקציב.</p>
+        <a class="btn neon block" href="#/create"><span class="ms" aria-hidden="true">auto_awesome</span>צרו את הקעקוע שלכם (Try-On)<span class="ms" aria-hidden="true">arrow_back</span></a>
+      </div>
+      <div class="ribbon">
+        <span><span class="ms c-cyan" aria-hidden="true">sensors</span>הדמיה דו־ממדית פעילה · LiDAR בקרוב</span>
+        <span class="c-cyan fw">חינם</span>
+      </div>
+      <div class="chips scroll" id="feedChips" role="group" aria-label="סינון לפי סגנון"></div>
+      <div class="row between section-head">
+        <h2>טרנדים וקהילה <span class="badge pink">השראה</span></h2>
+        <span class="muted small"><span class="ms c-pink" aria-hidden="true">local_fire_department</span> לחצו "נסו עליכם"</span>
+      </div>
+      <div class="feed" id="feedGrid"></div>
+      <div class="card soon-card">
+        <h3>בקרוב באפליקציה</h3>
+        <ul class="soon"><li>מיפוי עומק בווידאו / LiDAR</li><li>ניתוח גוון עור והתאמת רוויית דיו</li><li>מחשבון דהייה מבוסס נתונים</li></ul>
+      </div>
+    </section>
+
+    <!-- ===== 2. CREATE SKETCH ===== -->
+    <section class="screen" data-screen="create" aria-labelledby="h-create">
+      <span class="pill-dark step"><span class="ms" aria-hidden="true">auto_fix_high</span>שלב 1 מתוך 3: יצירת הקונספט</span>
+      <h1 id="h-create" tabindex="-1">עיצוב ויצירת הסקיצה שלכם</h1>
+      <p class="muted">בחרו איך להתחיל: מחולל, רפרנס משלכם או כיסוי של קעקוע ישן.</p>
+
+      <div class="mode-tabs" role="tablist" aria-label="מצב יצירה">
+        <button type="button" role="tab" data-mode="ai" aria-selected="true"><span class="ms" aria-hidden="true">psychology</span>מחולל סקיצות</button>
+        <button type="button" role="tab" data-mode="upload" aria-selected="false"><span class="ms" aria-hidden="true">add_photo_alternate</span>העלאת רפרנס</button>
+        <button type="button" role="tab" data-mode="coverup" aria-selected="false"><span class="ms" aria-hidden="true">healing</span>קאבר־אפ</button>
+      </div>
+
+      <div class="panel" data-panel="ai">
+        <div class="row between">
+          <div class="row gap">
+            <span class="icon-circle cyan"><span class="ms" aria-hidden="true">magic_button</span></span>
+            <div><h2 class="h-sm">יצירה מטקסט</h2><p class="muted small">תארו את הרעיון ונציע סקיצה מהספרייה</p></div>
+          </div>
+          <span class="tag cyan">הדמיה</span>
+        </div>
+        <div class="textarea-wrap">
+          <label class="sr-only" for="promptInput">תיאור הקעקוע</label>
+          <textarea id="promptInput" rows="3" maxlength="240" placeholder="לדוגמה: פרח עדין עם גבעול על האמה, קווים דקים…"></textarea>
+          <div class="row between"><button type="button" class="chip-sm" id="diceBtn"><span class="ms" aria-hidden="true">casino</span>השראה אקראית</button><span class="muted small" id="charCount">0/240</span></div>
+        </div>
+        <button type="button" class="btn neon block" id="generateBtn"><span class="ms" aria-hidden="true">bolt</span><span>חוללו סקיצה</span></button>
+        <div id="variations" hidden>
+          <p class="muted small">וריאציות, לחצו לבחירה:</p>
+          <div class="grid3" id="variationGrid"></div>
+        </div>
+        <p class="fine">באב־הטיפוס המחולל בוחר סקיצה מספריית הסקיצות לפי מילות מפתח. מחולל AI אמיתי יתווסף בהמשך.</p>
+      </div>
+
+      <div class="panel" data-panel="upload" hidden>
+        <div class="row gap">
+          <span class="icon-circle pink"><span class="ms" aria-hidden="true">upload_file</span></span>
+          <div><h2 class="h-sm">העלאת תמונת רפרנס</h2><p class="muted small">ציור, צילום או סקיצה. הרקע הלבן מוסר אוטומטית.</p></div>
+        </div>
+        <label class="dropzone">
+          <input type="file" id="sketchFile" accept="image/*">
+          <span class="icon-circle big"><span class="ms" aria-hidden="true">cloud_upload</span></span>
+          <b>לחצו לבחירת קובץ מהמכשיר</b>
+          <span class="muted small">JPG או PNG</span>
+        </label>
+        <div class="file-row" id="sketchFileRow" hidden></div>
+      </div>
+
+      <div class="panel" data-panel="coverup" hidden>
+        <div class="row gap">
+          <span class="icon-circle gold"><span class="ms" aria-hidden="true">healing</span></span>
+          <div><h2 class="h-sm">כיסוי קעקוע ישן או צלקת</h2><p class="muted small">ממקמים עיצוב חדש מעל הישן ובודקים שהוא מכסה הכול.</p></div>
+        </div>
+        <label class="switch-row">
+          <span><b>מצב Cover-Up</b><br><span class="muted small">בהדמיה המובנית יופיע קעקוע ישן דהוי. אפשר גם לצלם את שלכם במסך הבא.</span></span>
+          <input type="checkbox" id="coverUp" class="switch">
+        </label>
+        <p class="fine">טיפ: עיצוב חדש צריך להיות כהה וגדול יותר מהישן. בלאקוורק מכסה הכי טוב.</p>
+      </div>
+
+      <div class="panel">
+        <div class="row between"><h2 class="h-sm">סגנון אמנותי</h2><span class="muted small" id="styleLabel"></span></div>
+        <div class="chips wrap" id="styleChips" role="group" aria-label="סגנון"></div>
+        <div class="row between"><h2 class="h-sm">גודל משוער</h2><span class="muted small c-cyan" id="sizeLabel"></span></div>
+        <div class="grid3" id="sizePills" role="group" aria-label="גודל"></div>
+        <div class="row between"><h2 class="h-sm">גוון דיו</h2></div>
+        <div class="grid3" id="inkPills" role="group" aria-label="גוון דיו"></div>
+      </div>
+
+      <div class="panel">
+        <div class="row between"><h2 class="h-sm">ספריית סקיצות</h2><span class="muted small">בחרו אחת</span></div>
+        <div class="sketch-grid" id="sketchGrid"></div>
+      </div>
+
+      <div class="sticky-cta"><a class="btn neon block" href="#/scan"><span class="ms" aria-hidden="true">view_in_ar</span>המשך למיפוי אזור הגוף<span class="ms" aria-hidden="true">arrow_back</span></a></div>
+    </section>
+
+    <!-- ===== 3. AR CAMERA / BODY PHOTO ===== -->
+    <section class="screen" data-screen="scan" aria-labelledby="h-scan">
+      <h1 id="h-scan" class="sr-only" tabindex="-1">צילום ומיפוי אזור הגוף</h1>
+      <div class="viewfinder">
+        <canvas id="scanCanvas" width="800" height="1000" aria-hidden="true"></canvas>
+        <svg class="mesh" viewBox="0 0 360 450" aria-hidden="true">
+          <circle cx="180" cy="215" r="130" class="mesh-ring"/>
+          <ellipse cx="180" cy="140" rx="52" ry="14" class="m-pink"/>
+          <ellipse cx="180" cy="190" rx="56" ry="15" class="m-cyan"/>
+          <ellipse cx="180" cy="240" rx="60" ry="16" class="m-pink"/>
+          <ellipse cx="180" cy="290" rx="64" ry="18" class="m-cyan"/>
+          <ellipse cx="180" cy="340" rx="68" ry="20" class="m-pink"/>
+          <circle cx="180" cy="240" r="3" class="m-dot"/>
+        </svg>
+        <div class="scanline" aria-hidden="true"></div>
+        <div class="vf-top">
+          <span class="pill-dark"><i class="dot pink pulse"></i><b class="c-pink">2D MVP · מיפוי</b></span>
+          <span class="pill-dark"><span class="ms" aria-hidden="true">shield</span>טשטוש אזורים אינטימיים פעיל</span>
+        </div>
+        <div class="vf-guide"><span class="ms" aria-hidden="true">screen_rotation</span><span id="scanGuide">מקמו את אזור הגוף במרכז, ממרחק של כ־20 ס״מ</span></div>
+        <div class="vf-bottom">
+          <div class="tiles">
+            <label class="tile"><span class="muted small">רוחב האזור בתמונה</span><span class="tile-val"><input type="number" id="areaCm" min="4" max="80" inputmode="numeric" aria-label="רוחב האזור בתמונה בס״מ"><small>ס״מ</small></span></label>
+            <div class="tile"><span class="muted small">גוון עור</span><div class="tones" id="toneChips" role="group" aria-label="גוון עור"></div></div>
+            <div class="tile"><span class="muted small">מקור</span><span class="tile-val c-gold" id="srcLabel">דמו</span></div>
+          </div>
+          <div class="chips scroll" id="bodyChips" role="group" aria-label="אזור בגוף"></div>
+        </div>
+      </div>
+
+      <div class="card status-card" id="scanStatus">
+        <div class="row gap">
+          <span class="icon-circle cyan"><span class="ms" aria-hidden="true">verified</span></span>
+          <div><b id="scanTitle">אזור הגוף מוכן להדמיה</b><br><span class="muted small" id="scanSub">משתמשים בגוף לדוגמה. צלמו או העלו תמונה של עצמכם לתוצאה אמיתית.</span></div>
+        </div>
+        <div class="progress"><i></i></div>
+      </div>
+
+      <div class="shutter-row">
+        <label class="icon-btn lg" aria-label="בחירה מהגלריה"><input type="file" id="galleryFile" accept="image/*"><span class="ms" aria-hidden="true">photo_library</span></label>
+        <label class="shutter" aria-label="צילום אזור הגוף"><input type="file" id="cameraFile" accept="image/*" capture="environment"><span class="ms" aria-hidden="true">photo_camera</span></label>
+        <button type="button" class="icon-btn lg" id="resetBody" aria-label="חזרה לגוף לדוגמה"><span class="ms" aria-hidden="true">restart_alt</span></button>
+      </div>
+      <div class="next-bar">
+        <div class="row gap"><span class="icon-circle pink"><span class="ms" aria-hidden="true">layers</span></span><div><b>ממשיכים לחדר ההדמיה</b><br><span class="muted small">שם ממקמים את הסקיצה על העור</span></div></div>
+        <a class="btn neon" href="#/studio">המשך<span class="ms" aria-hidden="true">arrow_back</span></a>
+      </div>
+    </section>
+
+    <!-- ===== 4. VISUALIZER ===== -->
+    <section class="screen" data-screen="studio" aria-labelledby="h-studio">
+      <div class="stage-wrap">
+        <canvas id="stage" width="800" height="1000" tabindex="0" role="img" aria-label="הדמיית הקעקוע על הגוף. גררו להזזה. במקלדת: חיצים להזזה, פלוס ומינוס לגודל, סוגריים מרובעים לסיבוב."></canvas>
+        <div class="vf-top"><span class="pill-dark"><i class="dot pulse"></i><b class="c-cyan">הדמיה חיה · גררו וצבטו</b></span></div>
+        <div class="stage-chips">
+          <span class="pill-dark"><span class="ms c-cyan" aria-hidden="true">straighten</span><span id="sizeChip"></span></span>
+          <span class="pill-dark"><span class="ms c-gold" aria-hidden="true">location_on</span><span id="placeChip"></span></span>
+        </div>
+      </div>
+      <div class="row between section-head">
+        <div><h1 id="h-studio" class="h-md c-primary" tabindex="-1"></h1><p class="muted small">גררו את הסקיצה, צבטו בשתי אצבעות לגודל וסיבוב</p></div>
+        <button type="button" class="chip-sm aging" id="agingBtn" aria-pressed="false">⏳ <span>דהייה (5 שנים)</span><i class="dot off"></i></button>
+      </div>
+      <div class="panel sliders">
+        <label class="slider"><span class="row between"><span><span class="ms c-cyan" aria-hidden="true">straighten</span> גודל</span><output id="cmOut" class="c-cyan"></output></span><input type="range" id="cmRange" min="3" max="40" step="0.5" class="r-cyan"></label>
+        <label class="slider"><span class="row between"><span><span class="ms c-pink" aria-hidden="true">water_drop</span> שקיפות והטמעה בעור</span><output id="opOut" class="c-pink"></output></span><input type="range" id="opacity" min="30" max="100" step="1" class="r-pink"></label>
+        <label class="slider"><span class="row between"><span><span class="ms c-gold" aria-hidden="true">rotate_right</span> זווית סיבוב</span><output id="rotOut" class="c-gold"></output></span><input type="range" id="rot" min="-180" max="180" step="1" class="r-gold"></label>
+        <button type="button" class="link-btn" id="resetPos">איפוס מיקום</button>
+      </div>
+      <div class="row between section-head"><h2 class="h-sm">מתלבטים? שאלו את החברים</h2><span class="muted small">שיתוף עם סימן מים</span></div>
+      <div class="grid3">
+        <button type="button" class="share-btn" data-share="whatsapp"><span class="icon-circle wa"><span class="ms" aria-hidden="true">chat</span></span><b>וואטסאפ</b><span class="muted small">התייעצות מהירה</span></button>
+        <button type="button" class="share-btn" data-share="story"><span class="icon-circle ig"><span class="ms" aria-hidden="true">poll</span></span><b>סטורי</b><span class="muted small">לעשות או לוותר?</span></button>
+        <button type="button" class="share-btn" data-share="save"><span class="icon-circle cyan"><span class="ms" aria-hidden="true">bookmark_add</span></span><b>שמירה</b><span class="muted small">הורדת תמונה</span></button>
+      </div>
+      <div class="sticky-cta"><a class="btn neon block" href="#/match">אהבתם? לתמחור והתאמת מקעקע<span class="ms" aria-hidden="true">arrow_back</span></a></div>
+    </section>
+
+    <!-- ===== 5. PRICING + MATCHMAKING ===== -->
+    <section class="screen" data-screen="match" aria-labelledby="h-match">
+      <span class="pill-dark"><i class="dot pulse"></i>אלגוריתם התאמה פעיל</span>
+      <h1 id="h-match" tabindex="-1">הערכת מחיר והתאמת מקעקע אישי</h1>
+      <p class="muted" id="matchIntro"></p>
+      <div class="chips wrap" id="matchTags"></div>
+
+      <div class="panel price-card">
+        <div class="row between"><span class="muted small"><span class="ms" aria-hidden="true">insights</span> ניתוח מחיר לפי טבלת מחירים זמנית</span><span class="tag gold" id="cxTag"></span></div>
+        <p class="price-range" id="priceRange"></p>
+        <p class="muted small" id="priceMid"></p>
+        <svg class="bell" id="bell" viewBox="0 0 320 110" role="img" aria-label="התפלגות מחירים משוערת"></svg>
+        <fieldset class="seg-wrap">
+          <legend class="muted small">רמת מורכבות</legend>
+          <div class="seg" id="cxSeg">
+            <label><input type="radio" name="cx" value="1"><span>פשוט</span></label>
+            <label><input type="radio" name="cx" value="2"><span>בינוני</span></label>
+            <label><input type="radio" name="cx" value="3"><span>מורכב</span></label>
+          </div>
+        </fieldset>
+        <div class="budget">
+          <label class="row between" for="budget"><span><span class="ms c-cyan" aria-hidden="true">payments</span> תקציב מקסימלי</span><b id="budgetOut"></b></label>
+          <input type="range" id="budget" min="0" step="50" class="r-cyan">
+          <div class="alert" id="budgetAlert" hidden></div>
+        </div>
+        <p class="fine">הערכה לפי טבלת מחירים זמנית להדגמה. בפיילוט היא תתבסס על סקר של כ־50 אמנים. המחיר הסופי נקבע אצל המקעקע/ת.</p>
+      </div>
+
+      <div class="row between section-head"><h2>מקעקעים מומלצים</h2><span class="badge cyan" id="artistCount"></span></div>
+      <div class="artist-list" id="artistList"></div>
+    </section>
+
+    <!-- ===== 6. ARTIST PROFILE + BOOKING ===== -->
+    <section class="screen" data-screen="artist" aria-labelledby="h-artist">
+      <div class="banner-row">
+        <span class="icon-circle cyan"><span class="ms" aria-hidden="true">view_in_ar</span></span>
+        <div><b class="c-cyan small">הדמיה מותאמת אישית מוכנה</b><br><span class="small" id="simAttach"></span></div>
+      </div>
+      <div class="panel" id="artistCard"></div>
+      <div class="row between section-head"><h2>תיק עבודות</h2><span class="muted small">סקיצות לדוגמה</span></div>
+      <div class="portfolio" id="portfolio"></div>
+      <div class="panel loc" id="artistLoc"></div>
+
+      <form class="panel booking" id="bookingForm" novalidate>
+        <div class="row between"><h2 id="h-artist" tabindex="-1"><i class="dot pulse"></i> בקשה להצעת מחיר ושריון תור</h2><span class="badge">יומן מקוון</span></div>
+        <fieldset><legend class="muted small">מועד מועדף</legend><div class="chips wrap" id="slotChips"></div></fieldset>
+        <div class="deposit-box" id="depositBox"></div>
+        <fieldset><legend class="muted small">אמצעי תשלום למקדמה</legend>
+          <div class="grid3" id="payChips">
+            <label class="pay"><input type="radio" name="pay" value="card" checked><span><span class="ms" aria-hidden="true">credit_card</span>אשראי</span></label>
+            <label class="pay"><input type="radio" name="pay" value="bit"><span><span class="ms" aria-hidden="true">bolt</span>Bit</span></label>
+            <label class="pay"><input type="radio" name="pay" value="apple"><span><span class="ms" aria-hidden="true">phone_iphone</span>Apple Pay</span></label>
+          </div>
+        </fieldset>
+        <div class="grid2">
+          <label class="field"><span>שם מלא</span><input type="text" id="rName" autocomplete="name" required></label>
+          <label class="field"><span>טלפון</span><input type="tel" id="rPhone" autocomplete="tel" inputmode="tel" required pattern="[0-9+\-\s]{9,15}"></label>
+        </div>
+        <label class="field"><span>הודעה למקעקע/ת</span><textarea id="rNotes" rows="2" placeholder="השראה, אלרגיות ידועות, שאלות…"></textarea></label>
+        <label class="check"><input type="checkbox" id="rAge" required><span>אני בן/בת 18 ומעלה.</span></label>
+        <label class="check"><input type="checkbox" id="rTerms" required><span>ההדמיה והסקיצות נועדו להשראה בלבד ואינן התחייבות לתוצאה. הן לא מחליפות ייעוץ רפואי לגבי אלרגיה לדיו או צלקות.</span></label>
+        <p class="note"><span class="ms c-cyan" aria-hidden="true">verified_user</span> ביטוח קעקוע: תיקון בחינם כשהתור נקבע דרך TATOOA. ביטול חינם עד 48 שעות לפני.</p>
+        <p class="error" id="requestError" role="alert" hidden></p>
+        <button type="submit" class="btn neon block" id="bookBtn"></button>
+        <p class="fine center">לא נגבה כסף עכשיו. המקדמה תיגבה רק אם המקעקע/ת יאשר/תאשר את התור (סימולציה).</p>
+      </form>
+    </section>
+
+    <!-- ===== DONE ===== -->
+    <section class="screen" data-screen="done" aria-labelledby="h-done">
+      <div class="panel done">
+        <span class="done-mark" aria-hidden="true"><span class="ms">check</span></span>
+        <h1 id="h-done" tabindex="-1">הבקשה נשלחה</h1>
+        <div id="doneSummary"></div>
+        <a class="btn neon block" href="#/crm" data-role-link="artist">עברו לתצוגת האמן: ראו איך הליד מגיע</a>
+        <a class="btn ghost block" href="#/profile">הבקשות שלי</a>
+      </div>
+    </section>
+
+    <!-- ===== 7. CRM DASHBOARD ===== -->
+    <section class="screen" data-screen="crm" aria-labelledby="h-crm">
+      <div class="panel crm-head">
+        <div class="row gap">
+          <span class="icon-circle cyan big"><span class="ms" aria-hidden="true">draw</span></span>
+          <div>
+            <span class="c-cyan small fw">מצב סטודיו · CRM</span>
+            <h1 id="h-crm" tabindex="-1" class="h-md"><label class="sr-only" for="artistSelect">בחירת אמן</label><select id="artistSelect" class="title-select"></select></h1>
+          </div>
+        </div>
+        <span class="tag gold">פרו ✦</span>
+      </div>
+      <div class="kpis" id="kpis"></div>
+      <div class="search"><span class="ms" aria-hidden="true">search</span><label class="sr-only" for="leadSearch">חיפוש ליד</label><input type="search" id="leadSearch" placeholder="חיפוש ליד, לקוח או סגנון…"></div>
+      <div class="chips scroll" id="crmFilters" role="group" aria-label="סינון"></div>
+      <div class="tabs" id="crmTabs" role="tablist" aria-label="סטטוס"></div>
+      <div class="lead-list" id="leadList"></div>
+      <div class="panel empty" id="leadEmpty" hidden>
+        <span class="icon-circle big"><span class="ms" aria-hidden="true">inbox</span></span>
+        <h2>אין פניות כאן עדיין</h2>
+        <p class="muted">עברו למצב מתקעקע, עשו הדמיה ושלחו בקשה. היא תופיע כאן.</p>
+        <a class="btn neon" href="#/create" data-role-link="client">להדמיה</a>
+      </div>
+    </section>
+
+    <!-- ===== 8. LEAD DETAIL ===== -->
+    <section class="screen" data-screen="lead" aria-labelledby="h-lead">
+      <div id="leadDetail"></div>
+    </section>
+
+    <!-- ===== PROFILE ===== -->
+    <section class="screen" data-screen="profile" aria-labelledby="h-profile">
+      <h1 id="h-profile" tabindex="-1">הפרופיל שלי</h1>
+      <div class="row between section-head"><h2>הבקשות שלי</h2></div>
+      <div id="myRequests"></div>
+      <div class="panel">
+        <h2 class="h-sm">על TATOOA</h2>
+        <p class="muted small">מרקטפלייס דו־צדדי שמחבר בין מתקעקעים למקעקעים: הדמיה על הגוף, הערכת מחיר, והתאמת מקעקע. מקדמה של 15% בעת קביעת התור, והיתרה (85%) משולמת בסטודיו.</p>
+        <p class="fine">אב־טיפוס של קבוצה 12: תומר ברק, שוהם אטיאס ושירי שלל. השימוש מגיל 18. הסקיצות להשראה בלבד.</p>
+        <button type="button" class="link-btn danger" id="clearDemo">מחיקת נתוני ההדגמה</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== BOTTOM NAV ===== -->
+  <nav class="tabbar" aria-label="ניווט ראשי">
+    <a href="#/home" data-tab="home"><span class="ms" aria-hidden="true">explore</span><span>גילוי והשראה</span></a>
+    <a href="#/create" data-tab="create"><span class="ms" aria-hidden="true">view_in_ar</span><span>יצירה ו־AR</span></a>
+    <a href="#/match" data-tab="match"><span class="ms" aria-hidden="true">auto_awesome</span><span>התאמת מקעקע</span></a>
+    <a href="#/crm" data-tab="crm"><span class="ms" aria-hidden="true">calendar_month</span><span>לידים ויומן</span></a>
+    <a href="#/profile" data-tab="profile"><span class="ms" aria-hidden="true">fingerprint</span><span>פרופיל</span></a>
+  </nav>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
