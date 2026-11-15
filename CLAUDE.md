@@ -4,9 +4,40 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-A clickable MVP prototype of TATOOA, a two-sided marketplace that connects tattoo clients with tattoo artists. It is a university project (Group 12: Tomer Barak, Shoham Atias, Shiri Shalal), built from their product spec (PRD). The UI is in Hebrew, right-to-left (`<html lang="he" dir="rtl">`).
+A clickable MVP prototype of TATOOA, a two-sided marketplace that connects tattoo clients with tattoo artists. It is a university project (Group 12: Tomer Barak, Shoham Atias, Shiri Shalal), built from their product spec in `PRD.md`. The UI is in Hebrew, right-to-left (`<html lang="he" dir="rtl">`).
 
 The prototype covers the spec's MVP "Must Have" scope: simulating a sketch on a 2D body image, a basic price estimate, and sending a quote request (lead) to artists. It also shows the artist side receiving and handling that lead.
+
+## Product spec (PRD)
+
+`PRD.md` is the source of truth for product decisions. Read the relevant section before adding or changing a feature. This is a summary of what the code must respect.
+
+- **Product:** a two-sided marketplace. Clients (B2C) use it free (freemium). Artists (B2B) join free, and the platform takes a **15% commission that is also the appointment deposit**. The client pays the other 85% at the studio. There is an optional artist subscription (calendar, lead filtering, promotion, deposit clearing).
+- **Scope (PRD §4):**
+  - **Must Have:** 2D sketch simulation on a photo, a basic price estimate, and sending a lead to artists.
+  - **Nice to Have:** LiDAR/video mapping, skin-tone analysis, and the 5-year fading calculator. Show these as "coming soon" unless asked to build them.
+  - **Out of Scope for MVP:** a full calendar CRM, in-app deposit clearing and automated license verification. The prototype only mocks them.
+  - **Contradiction in the PRD:** in-app deposit clearing is Out of Scope (§4), but it is also the lock-in mechanism (§2, §7). The prototype simulates it. Never add real payment processing.
+- **Product rules the UI must keep:**
+  - The client never pays more than the tattoo price. The deposit is part of the price, not a fee on top (§7, Platform Leakage).
+  - **Watermark lock-in:** sketches and simulations carry the TATOOA watermark until the deposit is cleared. Only then does the artist get the clean stencil.
+  - **Tattoo Insurance** (free touch-ups) applies only to bookings made through the platform.
+  - **Legal:** legal-age (18+) confirmation, a medical disclaimer (the simulation is not a medical commitment and doesn't replace advice on ink allergies or scars), and an IP notice (AI sketches based on references are for inspiration only).
+  - **Privacy:** any future body video or photo flow must blur intimate areas and treat body images as sensitive data.
+- **User journeys (§5.2, §5.3), mapped to the screens:**
+  - **Client:** style and inspiration (prompt, references, cover-up scan) → body photo or scan → simulation (skin-tone ink, fading) → social share → price estimate with a budget check → 3–5 matched local artists → booking request and deposit. In the root app that is `#/studio` → `#/price` → `#/artists` → `#/request` → `#/done`. In the redesign it is `#/create` → `#/scan` → `#/studio` → `#/match` → `#/artist`.
+  - **Artist:** verified profile (portfolio, specialty, area, ratings) → a lead arrives as a "client portfolio" (simulation, size, style, skin tone, budget) → approve, counter or decline → health declaration before the visit and aftercare after it. In the root app that is `#/artist`. In the redesign it is `#/crm` → `#/lead`.
+- **User stories (§5.1), to use as manual test scenarios:**
+  1. A first-timer uploads a forearm photo and places a flower sketch to check its size and placement.
+  2. A cover-up client overlays sketches on an old tattoo to see if it is fully covered and doesn't look like a black blob.
+  3. An artist gets a lead that already has the placement, size and budget, and filters it against their own prices.
+- **Pricing (§6):** for the pilot, the prices come from manually collected price lists and a survey of about 50 artists. Later they come from an ML-updated database with anomaly detection. The engine warns when a budget is unrealistic.
+- **Pilot KPIs (§8)**, the funnel to instrument if analytics are added:
+  - Try-On rate (finished simulations ÷ users): 40%
+  - Lead rate (leads ÷ simulations): 15%
+  - Booking rate (deposits ÷ leads): 5%
+  - K-Factor from social shares: 1.1
+- **Risks (§7):** cold start (free trial for top artists, the watermarked simulator as a viral tool), platform leakage, IP, regulation and medical liability, and simulation realism (build an early PoC of the distortion on different body parts and collect artist feedback).
 
 ## Build / run
 
@@ -18,6 +49,7 @@ There is no build step, package manager, linter or test suite. Open `index.html`
 - `styles.css`: all styling. Colors are CSS custom properties on `:root` (`--ink`, `--paper`, `--card`, `--accent` red, `--gold`, `--ok`, `--warn`, `--muted`, `--line`). Reuse them instead of hard-coding colors.
 - `app.js`: one IIFE with these sections: DATA, STATE, HELPERS, LEAD STORAGE, DRAWING, STUDIO, PRICE, ARTISTS, REQUEST, ARTIST INBOX, ROUTER, INIT.
 - `README.md`: a short Hebrew description for the team.
+- `PRD.md`: the group's full product spec, in English.
 
 ## How app.js works
 
