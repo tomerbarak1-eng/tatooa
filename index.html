@@ -7,19 +7,23 @@
 <meta name="description" content="אב־טיפוס של TATOOA: הדמיית קעקוע על תמונת הגוף, הערכת מחיר ושליחת בקשה להצעת מחיר לאמני קעקועים.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip" href="#main">דילוג לתוכן</a>
 
 <header class="topbar">
-  <a class="logo" href="#/home" aria-label="TATOOA – דף הבית">TATOO<span>A</span></a>
+  <a class="brand" href="#/home" aria-label="TATOOA – דף הבית"><b>TATOOA</b><small>Tattoo simulation atelier</small></a>
   <nav aria-label="ניווט ראשי">
     <a href="#/home" data-nav="home">בית</a>
     <a href="#/studio" data-nav="studio">סטודיו הדמיה</a>
+    <a href="#/artists" data-nav="artists">גילוי אמנים</a>
+    <a href="#/cover" data-nav="cover">כיסוי קעקוע</a>
+    <a href="#/process" data-nav="process">תהליך היצירה</a>
     <a href="#/artist" data-nav="artist">אזור אמנים</a>
   </nav>
+  <a class="btn primary small top-cta" href="#/studio">להתחיל הדמיה</a>
 </header>
 <div class="demo-banner" role="note">אב־טיפוס להדגמה · האמנים, המחירים והתשלומים בדויים</div>
 
@@ -36,25 +40,38 @@
     <div class="hero">
       <div class="hero-text">
         <p class="eyebrow">הדמיית קעקוע · הערכת מחיר · התאמת אמן/ית</p>
-        <h1 id="h-home" tabindex="-1">תראו את הקעקוע<br>לפני שהוא על העור</h1>
+        <h1 id="h-home" tabindex="-1">תראו את הקעקוע <span>לפני שהוא על העור.</span></h1>
         <p class="intro">מעלים תמונה של אזור הגוף, ממקמים את הסקיצה, מקבלים הערכת מחיר ושולחים בקשה להצעת מחיר לאמנים שמתאימים לסגנון ולתקציב שלכם.</p>
         <div class="cta-row">
-          <a class="btn primary" href="#/studio">להתחיל הדמיה</a>
-          <a class="btn ghost" href="#/artist">אני אמן/ית</a>
+          <a class="btn primary" href="#/studio">להתחיל הדמיה ←</a>
+          <a class="btn text" href="#/artist">אני אמן/ית</a>
         </div>
         <p class="fine">ההדמיה והערכת המחיר בחינם.</p>
+        <ul class="facts" aria-label="במספרים">
+          <li><b>0 ₪</b><small>הדמיה והערכת מחיר</small></li>
+          <li><b>3–5</b><small>אמנים מותאמים לכם</small></li>
+          <li><b>15%</b><small>מקדמה, חלק מהמחיר</small></li>
+        </ul>
       </div>
       <div class="hero-visual" aria-hidden="true">
-        <canvas id="heroCanvas" width="800" height="1000"></canvas>
+        <div class="hero-frame">
+          <canvas id="heroCanvas" width="800" height="1000"></canvas>
+          <div class="hero-cap"><span>Live simulation</span><i>● Demo</i></div>
+        </div>
       </div>
     </div>
 
-    <h2 class="section-title">איך זה עובד</h2>
-    <ol class="steps">
-      <li><span class="num">1</span><h3>הדמיה על הגוף</h3><p>מעלים תמונה של האמה, הכתף או כל אזור אחר, ובוחרים סקיצה או מעלים אחת משלכם. גוררים, מגדילים ומסובבים עד שזה יושב בדיוק.</p></li>
-      <li><span class="num">2</span><h3>הערכת מחיר</h3><p>לפי גודל, סגנון, מיקום ומורכבות. מכניסים תקציב ומקבלים התראה אם הוא לא ריאלי.</p></li>
-      <li><span class="num">3</span><h3>התאמת אמן/ית</h3><p>3–5 אמנים באזור שלכם עם תיק עבודות מתאים, ובקשה להצעת מחיר שכבר כוללת את כל הפרטים.</p></li>
+    <h2 class="section-title">מסע היצירה בארבעה שלבים</h2>
+    <ol class="flow">
+      <li><span class="num">01</span><span class="tag-line">Body &amp; area</span><h3>אזור הגוף</h3><p>מעלים תמונה של האמה, הכתף או כל אזור אחר, או בוחרים אזור מוכן.</p><a href="#/studio">לסטודיו ←</a></li>
+      <li><span class="num">02</span><span class="tag-line">Sketch &amp; style</span><h3>סקיצה וסגנון</h3><p>בוחרים סקיצה מובנית או מעלים אחת משלכם, ומגדירים סגנון: דק, בלאקוורק, ריאליזם ועוד.</p><a href="#/studio">לסטודיו ←</a></li>
+      <li><span class="num">03</span><span class="tag-line">Simulation</span><h3>הדמיה על העור</h3><p>גוררים, מגדילים, מסובבים ומשנים שקיפות עד שזה יושב בדיוק. אפשר גם לבדוק כיסוי של קעקוע ישן.</p><a href="#/cover">לכיסוי קעקוע ←</a></li>
+      <li><span class="num">04</span><span class="tag-line">Price &amp; matching</span><h3>מחיר והתאמה</h3><p>מקבלים טווח מחיר, ושולחים בקשה מוכנה לאמנים שמתאימים לסגנון ולתקציב.</p><a href="#/price">להערכת מחיר ←</a></li>
     </ol>
+    <div class="callout">
+      <p>מוכנים לראות את ההדמיה על הגוף שלכם?</p>
+      <a class="btn accent" href="#/studio">התחילו הדמיה בחינם</a>
+    </div>
 
     <div class="two-col">
       <div class="card">
@@ -88,6 +105,7 @@
 
   <section class="screen" data-screen="studio" aria-labelledby="h-studio">
     <div class="screen-head">
+      <p class="eyebrow">01 · Simulation studio</p>
       <h1 id="h-studio" tabindex="-1">סטודיו הדמיה</h1>
       <p>בחרו אזור בגוף וסקיצה, ומקמו אותה על התמונה.</p>
     </div>
@@ -168,6 +186,7 @@
 
   <section class="screen" data-screen="price" aria-labelledby="h-price">
     <div class="screen-head">
+      <p class="eyebrow">02 · Price estimate</p>
       <h1 id="h-price" tabindex="-1">הערכת מחיר</h1>
       <p>הנתונים מולאו מההדמיה. אפשר לשנות אותם.</p>
     </div>
@@ -210,6 +229,7 @@
 
   <section class="screen" data-screen="artists" aria-labelledby="h-artists">
     <div class="screen-head">
+      <p class="eyebrow">03 · Artist matching</p>
       <h1 id="h-artists" tabindex="-1">אמנים שמתאימים לכם</h1>
       <p id="artistsIntro"></p>
     </div>
@@ -221,6 +241,7 @@
 
   <section class="screen" data-screen="request" aria-labelledby="h-request">
     <div class="screen-head">
+      <p class="eyebrow">04 · Quote request</p>
       <h1 id="h-request" tabindex="-1">בקשה להצעת מחיר</h1>
       <p>האמן/ית יקבל/תקבל את ההדמיה, הגודל, הסגנון והתקציב.</p>
     </div>
@@ -263,6 +284,7 @@
 
   <section class="screen" data-screen="artist" aria-labelledby="h-artist">
     <div class="screen-head">
+      <p class="eyebrow">For artists · Lead inbox</p>
       <h1 id="h-artist" tabindex="-1">אזור אמנים: פניות נכנסות</h1>
       <p>כל פנייה מגיעה כ"תיק לקוח": הדמיה, גודל, סגנון ותקציב.</p>
     </div>
@@ -280,11 +302,102 @@
     <button type="button" class="btn text danger" id="clearDemo">מחיקת נתוני ההדגמה</button>
   </section>
 
+  <section class="screen" data-screen="cover" aria-labelledby="h-cover">
+    <div class="page-head">
+      <p class="eyebrow">Cover-up · Rework</p>
+      <h1 id="h-cover" tabindex="-1">כיסוי קעקוע ישן: בודקים לפני שמחליטים</h1>
+      <p>יש קעקוע שאתם כבר לא אוהבים? מניחים עיצוב חדש על תמונה של הקיים, ורואים אם הוא מכסה אותו, בלי שייצא כתם שחור.</p>
+    </div>
+    <div class="split-page">
+      <div class="ph" aria-hidden="true"><b>01</b><small>מקום לתמונת לפני / אחרי</small></div>
+      <div class="card">
+        <h2>איך בודקים בסטודיו</h2>
+        <ol class="tips">
+          <li><b>מעלים תמונה של הקעקוע הקיים.</b><br>בסטודיו ההדמיה בוחרים "העלאת תמונה של אזור הגוף", ומסמנים "כיסוי קעקוע ישן (Cover-Up)".</li>
+          <li><b>בוחרים עיצוב כהה וגדול יותר.</b><br>עיצוב בהיר או קטן לא יסתיר דיו ישן. בלאקוורק או הגדלה עוזרים יותר.</li>
+          <li><b>מכוונים שקיפות וגודל.</b><br>אם הקעקוע הישן עדיין בולט מבעד לעיצוב, מגדילים או מכהים, ובודקים שוב.</li>
+        </ol>
+        <div class="actions start">
+          <a class="btn primary" href="#/studio">לבדיקת Cover-Up בסטודיו ←</a>
+        </div>
+      </div>
+    </div>
+    <p class="fine">ההדמיה להשראה בלבד. התוצאה בפועל תלויה בצבע, בגודל ובעומק של הקעקוע הקיים, והאמן/ית יחליטו בייעוץ אם כיסוי אפשרי. אותו כלל חל על הסתרת צלקות, וההדמיה אינה מחליפה ייעוץ רפואי.</p>
+  </section>
+
+  <section class="screen" data-screen="process" aria-labelledby="h-process">
+    <div class="page-head">
+      <p class="eyebrow">The process</p>
+      <h1 id="h-process" tabindex="-1">כאן כל קעקוע מתחיל בשיחה, ממשיך בהדמיה ונסגר בהסכמה</h1>
+      <p>ארבעה שלבים מהרעיון ועד התור, בלי ניחושים בדרך.</p>
+    </div>
+
+    <div class="split-page">
+      <div class="ph" aria-hidden="true"><b>01</b><small>מקום לתמונה</small></div>
+      <div class="card"><p class="mini-label">Inspiration</p><h2>השראה וסקיצה</h2>
+        <p>בוחרים סקיצה מובנית או מעלים משלכם, ומגדירים סגנון. ההדמיה והערכת המחיר בחינם.</p></div>
+    </div>
+    <div class="split-page">
+      <div class="card"><p class="mini-label">Simulation</p><h2>הדמיה על הגוף</h2>
+        <p>ממקמים על תמונה של האזור, מסובבים, מגדילים ומשנים שקיפות. אפשר לשתף לחברים לפני שמחליטים. מציאות רבודה וסריקת עומק יגיעו בהמשך.</p></div>
+      <div class="ph" aria-hidden="true"><b>02</b><small>מקום לתמונה</small></div>
+    </div>
+    <div class="split-page">
+      <div class="ph" aria-hidden="true"><b>03</b><small>מקום לתמונה</small></div>
+      <div class="card"><p class="mini-label">Price &amp; matching</p><h2>מחיר והתאמת אמן/ית</h2>
+        <p>טווח מחיר לפי גודל, סגנון, מיקום ומורכבות, והתראה אם התקציב לא ריאלי. אחר כך 3–5 אמנים שמתאימים, ובקשה מוכנה לשליחה.</p></div>
+    </div>
+    <div class="split-page">
+      <div class="card"><p class="mini-label">Booking</p><h2>מקדמה ותור</h2>
+        <p>כשהאמן/ית מאשר/ת, משלמים מקדמה של 15% שהיא חלק מהמחיר, ואת 85% הנותרים בסטודיו. אחרי המקדמה האמן/ית מקבל/ת סטנסיל נקי, ואפשר לשלוח הצהרת בריאות והוראות טיפול. בגרסה הזו התשלום והטפסים מדומים.</p></div>
+      <div class="ph" aria-hidden="true"><b>04</b><small>מקום לתמונה</small></div>
+    </div>
+
+    <ul class="pillars">
+      <li><span class="no">01</span><h3>מקדמה חלק מהמחיר</h3><p>הלקוח לא משלם יותר ממחיר הקעקוע.</p></li>
+      <li><span class="no">02</span><h3>נגד הברזות</h3><p>המקדמה מבטיחה שהתור יתקיים.</p></li>
+      <li><span class="no">03</span><h3>ביטוח קעקוע</h3><p>תיקונים בחינם כשסוגרים דרך האפליקציה.</p></li>
+      <li><span class="no">04</span><h3>סטנסיל נקי</h3><p>סימן המים יוסר אחרי סליקת המקדמה.</p></li>
+    </ul>
+
+    <h2>שאלות נפוצות</h2>
+    <div class="faq">
+      <details><summary>כמה עולה להשתמש באפליקציה?</summary><p>ההדמיה והערכת המחיר בחינם. אמנים מצטרפים בחינם. ההכנסה של הפלטפורמה היא עמלה של 15% שהיא גם המקדמה על התור.</p></details>
+      <details><summary>האם ההדמיה מדויקת?</summary><p>בגרסה הזו ההדמיה דו־ממדית על תמונה, ואתם ממקמים את הסקיצה ידנית. מציאות רבודה, סריקת עומק וניתוח גוון עור עדיין בקרוב. ההדמיה להשראה בלבד ואינה התחייבות לתוצאה.</p></details>
+      <details><summary>האמנים והמחירים אמיתיים?</summary><p>לא. כל האמנים, הדירוגים והמחירים באב־הטיפוס הם נתוני הדגמה. המחירים האמיתיים ייקבעו מסקר של כ־50 אמנים.</p></details>
+      <details><summary>מה קורה עם התמונות שלי?</summary><p>באב־הטיפוס אין שרת, והפניות והתמונות נשמרות רק בדפדפן שלכם. בגרסה עם וידאו, אזורים אינטימיים יטושטשו אוטומטית והמידע הרגיש יוצפן.</p></details>
+    </div>
+
+    <div class="big-cta">
+      <h2>מוכנים להפוך את הרעיון להדמיה על הגוף?</h2>
+      <a class="btn primary" href="#/studio">התחילו הדמיה ←</a>
+    </div>
+  </section>
+
 </main>
 
 <footer class="footer">
-  <p><b>TATOOA</b> · אב־טיפוס של קבוצה 12: תומר ברק, שוהם אטיאס ושירי שלל</p>
-  <p class="fine">הסקיצות וההדמיות להשראה בלבד. השימוש מגיל 18. ההדמיה אינה מחליפה ייעוץ רפואי.</p>
+  <div class="footer-grid">
+    <div>
+      <a class="brand" href="#/home" aria-label="TATOOA – דף הבית"><b>TATOOA</b><small>Tattoo simulation atelier</small></a>
+      <p class="fine">אב־טיפוס של קבוצה 12: תומר ברק, שוהם אטיאס ושירי שלל.</p>
+    </div>
+    <div>
+      <h4>ניווט</h4>
+      <ul>
+        <li><a href="#/studio">סטודיו הדמיה</a></li>
+        <li><a href="#/artists">גילוי אמנים</a></li>
+        <li><a href="#/cover">כיסוי קעקוע</a></li>
+        <li><a href="#/process">תהליך היצירה</a></li>
+        <li><a href="#/artist">אזור אמנים</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>חשוב לדעת</h4>
+      <p class="fine">הסקיצות וההדמיות להשראה בלבד. השימוש מגיל 18. ההדמיה אינה התחייבות רפואית ואינה מחליפה ייעוץ על אלרגיה לדיו או צלקות קיימות. סקיצות שנוצרות בבינה מלאכותית על בסיס רפרנס הן להשראה בלבד.</p>
+    </div>
+  </div>
+  <p class="footer-legal">TATOOA · אב־טיפוס להדגמה אקדמית. האמנים, המחירים והתשלומים בדויים.</p>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
