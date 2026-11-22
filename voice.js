@@ -14,6 +14,7 @@
     live: 'מקשיבה… אפשר לדבר.',
     noMic: 'אין גישה למיקרופון. אשרו אותה בדפדפן ונסו שוב.',
     micBlocked: 'המיקרופון חסום. פתחו את http://localhost:8787 ב-Chrome רגיל (לא בתצוגה מקדימה בתוך אפליקציה), לחצו על סמל המנעול ליד הכתובת, הגדירו מיקרופון ל"אפשר", ורעננו. אם זה לא עוזר: הגדרות Windows > פרטיות > מיקרופון.',
+    noSpeech: 'הדפדפן הזה לא תומך בזיהוי דיבור. השתמשו ב-Chrome או ב-Edge.',
     noCredits: 'בחשבון ה-API של OpenAI אין יתרה. הוסיפו קרדיט ב-platform.openai.com/settings/organization/billing ונסו שוב.',
     micMissing: 'לא נמצא מיקרופון במחשב. חברו מיקרופון או אוזניות ונסו שוב.',
     noServer: 'השרת המקומי לא ענה. הריצו npm start ופתחו את http://localhost:8787',
@@ -128,7 +129,30 @@
     }
   }
 
-  btn.addEventListener('click', () => { pc ? stop() : start(); });
+  // ---- free browser-only mode (voice-local.js) is the default; ?voice=openai uses the OpenAI Realtime flow above ----
+  const MODE = new URLSearchParams(location.search).get('voice') === 'openai' ? 'openai' : 'local';
+  let local = null;
+
+  function toggleLocal() {
+    const LV = window.TatooaLocalVoice;
+    panel.hidden = false;
+    if (local) { local.stop(); return; }
+    if (!LV || !LV.supported) { setStatus(L.noSpeech, true); return; }
+    log.textContent = '';
+    local = LV.create({
+      setStatus,
+      bot: t => addLine(t),
+      user: t => addLine('אתם: ' + t).classList.add('voice-user'),
+      onEnd: () => { local = null; setBtn(L.start, false); setStatus(L.idle, false); }
+    });
+    setBtn(L.stop, true);
+    local.start();
+  }
+
+  btn.addEventListener('click', () => {
+    if (MODE === 'local') return toggleLocal();
+    pc ? stop() : start();
+  });
   setStatus(L.idle, false);
-  window.addEventListener('pagehide', teardown);
+  window.addEventListener('pagehide', () => { teardown(); local && local.stop(); });
 })();

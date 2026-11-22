@@ -52,7 +52,7 @@ const MIME = {
   '.css': 'text/css; charset=utf-8', '.md': 'text/markdown; charset=utf-8'
 };
 // Only these files are served; .env, .git, server.js etc. are never reachable.
-const STATIC = new Set(['index.html', 'app.js', 'styles.css', 'voice.js']);
+const STATIC = new Set(['index.html', 'app.js', 'styles.css', 'voice.js', 'voice-local.js']);
 const HOSTS = new Set([`localhost:${PORT}`, `127.0.0.1:${PORT}`]);
 
 function send(res, code, body, type = 'application/json; charset=utf-8') {

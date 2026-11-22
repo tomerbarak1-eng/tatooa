@@ -267,3 +267,4 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent);width:20px;hei
 .voice-log{max-height:180px;overflow:auto}
 .voice-line{margin:0 0 6px;font-size:.95rem}
 @media (max-width:900px){.voice{bottom:72px}}
+.voice-line.voice-user{color:var(--muted);font-weight:600}
