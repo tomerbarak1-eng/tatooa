@@ -385,6 +385,21 @@ main,.stepper{position:relative;z-index:1}   /* page content paints above the de
   .facts{flex-wrap:wrap}
 }
 
+/* ===== Voice agent (voice.js) ===== */
+.voice{position:fixed;bottom:18px;inset-inline-start:16px;z-index:50;display:flex;flex-direction:column;align-items:flex-start;gap:10px;max-width:min(360px,calc(100vw - 32px))}
+.voice-btn{font:inherit;font-weight:600;letter-spacing:.02em;cursor:pointer;border:0;border-radius:var(--radius);min-height:46px;padding:10px 22px;background:var(--accent);color:#fff;box-shadow:var(--shadow)}
+.voice-btn:hover{background:var(--accent-2)}
+.voice-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.voice-btn.on{background:var(--ink)}
+.voice-panel{background:var(--card);color:var(--ink);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius);padding:12px 14px;box-shadow:var(--shadow);width:100%}
+.voice-title{margin:0 0 4px;font-family:var(--serif);font-weight:700;font-size:1.1rem}
+.voice-status{margin:0 0 8px;font-size:.9rem;color:var(--muted)}
+.voice-status.err{color:var(--warn);font-weight:600}
+.voice-log{max-height:180px;overflow:auto}
+.voice-line{margin:0 0 6px;font-size:.95rem}
+@media (max-width:900px){.voice{bottom:72px}}
+.voice-line.voice-user{color:var(--muted);font-weight:600}
+
 /* Sound on/off toggle in the top bar */
 .mute-btn{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);width:40px;height:40px;font-size:1rem;line-height:1;cursor:pointer;color:inherit;flex:none}
 .mute-btn:hover,.mute-btn:focus-visible{border-color:var(--accent)}
