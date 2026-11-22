@@ -14,6 +14,7 @@
     live: 'מקשיבה… אפשר לדבר.',
     noMic: 'אין גישה למיקרופון. אשרו אותה בדפדפן ונסו שוב.',
     micBlocked: 'המיקרופון חסום. פתחו את http://localhost:8787 ב-Chrome רגיל (לא בתצוגה מקדימה בתוך אפליקציה), לחצו על סמל המנעול ליד הכתובת, הגדירו מיקרופון ל"אפשר", ורעננו. אם זה לא עוזר: הגדרות Windows > פרטיות > מיקרופון.',
+    noCredits: 'בחשבון ה-API של OpenAI אין יתרה. הוסיפו קרדיט ב-platform.openai.com/settings/organization/billing ונסו שוב.',
     micMissing: 'לא נמצא מיקרופון במחשב. חברו מיקרופון או אוזניות ונסו שוב.',
     noServer: 'השרת המקומי לא ענה. הריצו npm start ופתחו את http://localhost:8787',
     noSecure: 'שיחה קולית עובדת רק מ-http://localhost:8787 (לא מפתיחת הקובץ ישירות).',
@@ -114,7 +115,11 @@
         method: 'POST', body: offer.sdp,
         headers: { Authorization: 'Bearer ' + data.value, 'Content-Type': 'application/sdp' }
       });
-      if (!sdp.ok) throw new Error('OpenAI ' + sdp.status + ' ' + (await sdp.text()).slice(0, 200));
+      if (!sdp.ok) {
+        const body = await sdp.text();
+        if (sdp.status === 429 && /credit|quota/i.test(body)) throw new Error(L.noCredits);
+        throw new Error('OpenAI ' + sdp.status + ' ' + body.slice(0, 200));
+      }
       await pc.setRemoteDescription({ type: 'answer', sdp: await sdp.text() });
     } catch (e) {
       console.error(e);
