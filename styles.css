@@ -316,6 +316,42 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent);width:20px;hei
   text-align:center;box-shadow:var(--shadow);opacity:0;transform:translateY(20px);pointer-events:none;transition:all .25s ease;z-index:60;border-bottom:3px solid var(--accent)}
 .toast.show{opacity:1;transform:none}
 
+/* ---------- ink cup + dripping needle (decorative, fixed top-right under the demo banner) ---------- */
+/* Line-art only: hollow outlines in --ink, black ink drop and ink in the cup. The SVG is mirrored so the needle points toward the page. */
+.inkwell{position:fixed;inset-inline-start:8px;top:104px;width:170px;pointer-events:none;z-index:0}
+main,.stepper{position:relative;z-index:1}   /* page content paints above the decorative ink cup */
+.inkwell svg{display:block;width:100%;height:auto;overflow:visible;transform:scaleX(-1)}
+.inkwell :is(.ink-grip,.ink-ring,.ink-body,.ink-screw,.ink-bar,.ink-spring,.ink-cord,.ink-coil,.ink-coil-hi,.ink-tube,.ink-needle,.ink-cup,.ink-surface,.ink-rim,.ink-shadow){
+  fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.inkwell .ink-cord{stroke-width:2.5}
+.ink-shadow{display:none}
+.inkwell .ink-cup,.inkwell .ink-rim{stroke-width:2}
+.ink-fill{fill:var(--ink)}
+.ink-ripple{fill:none;stroke:var(--ink);stroke-width:1.5;opacity:0}
+.ink-drop{fill:var(--ink);transform-box:fill-box;transform-origin:50% 0;animation:ink-drip 3.6s ease-in infinite}
+.ink-ripple{transform-box:fill-box;transform-origin:center;animation:ink-ripple 3.6s ease-out infinite}
+.ink-machine{animation:ink-sway 3.6s ease-in-out infinite}
+@keyframes ink-drip{
+  0%{transform:translateY(0) scale(0);opacity:1}
+  30%{transform:translateY(0) scale(1)}
+  36%{transform:translateY(4px) scale(.95,1.2)}
+  58%{transform:translateY(86px) scale(.85,1.25);opacity:1}
+  59%,100%{transform:translateY(86px) scale(.85,1.25);opacity:0}
+}
+@keyframes ink-ripple{
+  0%,58%{transform:scale(.1);opacity:0}
+  60%{transform:scale(.1);opacity:.9}
+  85%,100%{transform:scale(1);opacity:0}
+}
+@keyframes ink-sway{
+  0%,100%{transform:translateY(-1.5px)}
+  50%{transform:translateY(1.5px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ink-drop,.ink-ripple,.ink-machine{animation:none}
+  .ink-drop{transform:none}
+}
+
 /* ---------- mobile ---------- */
 @media (max-width:1100px){
   .topbar nav a{padding:8px 8px;font-size:.86rem}
@@ -338,6 +374,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent);width:20px;hei
   .top-cta{margin-inline-start:auto;min-height:40px;padding:6px 16px}
   .stepper a{font-size:.74rem;gap:4px;padding:8px 2px}
   .inbox-bar select{min-width:0}
+  .inkwell{top:118px;inset-inline-start:4px;width:96px;opacity:.9}
   .section-title{margin-top:48px}
 }
 @media (max-width:520px){
