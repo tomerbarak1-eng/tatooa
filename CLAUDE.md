@@ -46,7 +46,7 @@ There is no build step, package manager, linter or test suite. Open `index.html`
 ## Files
 
 - `index.html`: all screens as `<section class="screen" data-screen="…">`, the top nav, the 4-step stepper, and the footer.
-- `styles.css`: all styling. Colors are CSS custom properties on `:root` (`--ink`, `--paper`, `--card`, `--accent` red, `--gold`, `--ok`, `--warn`, `--muted`, `--line`). Reuse them instead of hard-coding colors.
+- `styles.css`: all styling, in the "Atelier" look (see below). Colors, radius and fonts are CSS custom properties on `:root` (`--ink`, `--paper`, `--paper-2`, `--card`, `--accent` oxblood red, `--ok`, `--warn`, `--muted`, `--line`, `--serif`, `--display`). Reuse them instead of hard-coding values. `--gold` is a legacy name that now equals the accent.
 - `app.js`: one IIFE with these sections: DATA, STATE, HELPERS, LEAD STORAGE, DRAWING, STUDIO, PRICE, ARTISTS, REQUEST, ARTIST INBOX, ROUTER, INIT.
 - `README.md`: a short Hebrew description for the team.
 - `PRD.md`: the group's full product spec, in English.
@@ -75,7 +75,19 @@ There is no build step, package manager, linter or test suite. Open `index.html`
 - The canvas has `touch-action:none` so drag and pinch work on phones.
 - Watch class names: `.lead` is the inbox lead card, and the home intro paragraph is `.intro`.
 
-## Redesign in progress (Stitch UX/UI)
+## "Atelier" design (branch `feature/ux-redesign`)
+
+The root app now follows the team's newer UX/UI screens (7 PNGs, kept outside the repo). It is a light editorial look, not the dark neon Stitch direction below.
+
+- **Look:** off-white paper (`--paper`), ink black, oxblood red accent (`--accent`), sharp corners (`--radius:2px`), serif Hebrew headings (`Frank Ruhl Libre`), condensed Latin wordmark and numerals (`Bebas Neue`, `--display`), body in `Heebo`. Small tracked-out English labels (`.eyebrow`, `.mini-label`) sit above headings. Black primary buttons that turn red on hover, red `.btn.accent` for promos.
+- **Screens:** home (hero, 4-step `.flow`, `.callout`, clients/artists cards), studio, price, artists, request, done, artist inbox, plus two static pages with no JS: `#/cover` (Cover-Up how-to) and `#/process` (4 steps, `.pillars`, FAQ with `<details>`). The router already handles any `.screen[data-screen]`, and the header `data-nav` links mark the active page.
+- **Photos:** the design uses black-and-white photography that is not in the repo. Placeholders (`.ph`) mark where photos go, and the hero canvas is greyscaled with CSS. Don't invent people or studio facts.
+- **Copy:** the design mock-ups contain made-up claims (years of experience, precision in mm, ISO sterility standards, a named founder). They were **not** copied. Facts on the pages come from `PRD.md` (15% deposit, 85% in the studio, 3-5 artists, free simulation). Keep it that way.
+- **Gotchas:** `.card.done` (not `.done`) is the confirmation card, because the stepper also gets a `done` class. The router focuses each screen's `h1` (`tabindex="-1"`), so its outline is hidden.
+- **Not built from the design:** the 3D / anatomical studio, "calibration engine" panels, match-percentage rings and AR/LiDAR widgets. They map to features that are "coming soon" in the PRD.
+
+## Older redesign (Stitch dark UI), superseded by the Atelier design
+
 
 The team's UX/UI lives in the Stitch project "AI Tattoo Visualizer Platform" (id `1920239853417980523`), which has 8 Hebrew mobile screens. Read them with the Stitch MCP (`list_screens`, `download_file`). The designs use the name "InkSphere / דיותא", but the app is called **TATOOA**, so keep that name.
 

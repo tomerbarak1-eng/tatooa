@@ -758,7 +758,7 @@
 
     $$('.screen').forEach(s => s.classList.toggle('active', s.dataset.screen === name));
     $$('[data-nav]').forEach(a => {
-      const on = a.dataset.nav === name || (a.dataset.nav === 'studio' && FLOW.includes(name));
+      const on = a.dataset.nav === name || (a.dataset.nav === 'studio' && (name === 'price' || name === 'request'));
       a.classList.toggle('active', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current');
     });
     const idx = FLOW.indexOf(name);
