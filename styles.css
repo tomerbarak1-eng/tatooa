@@ -253,3 +253,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--accent);width:20px;hei
   .stepper a{font-size:.78rem;gap:4px;padding:7px 4px}
   .inbox-bar select{min-width:0}
 }
+
+/* Sound on/off toggle in the top bar */
+.mute-btn{background:none;border:1px solid var(--line);border-radius:50%;width:36px;height:36px;font-size:1rem;cursor:pointer;margin-inline-start:auto;color:inherit}
+.mute-btn:hover,.mute-btn:focus-visible{border-color:var(--accent)}
