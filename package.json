@@ -1,0 +1,8 @@
+{
+  "name": "tatooa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TATOOA MVP prototype with a voice agent (OpenAI Realtime API)",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
