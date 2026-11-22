@@ -688,6 +688,59 @@
     window.addEventListener('storage', e => { if (e.key === Store.key && currentScreen === 'artist') renderInbox(); });
   }
 
+  /* ================= SOUND ================= */
+  // Store-entry style "achievement" chime, synthesized with Web Audio (no audio file, no licensing).
+  // Plays when the client finishes the simulation (clicks "להערכת מחיר"). Mute choice is remembered.
+  const Sound = (() => {
+    const KEY = 'tatooa.muted.v1';
+    let ctx = null, muted = false;
+    try { muted = localStorage.getItem(KEY) === '1'; } catch (e) { }
+    const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function bell(ac, freq, t, dur, gain) {
+      // a bell = a few sine partials with a fast attack and an exponential decay
+      [[1, 1], [2.01, .35], [3.99, .12]].forEach(([mult, amp]) => {
+        const o = ac.createOscillator(), g = ac.createGain();
+        o.type = 'sine'; o.frequency.value = freq * mult;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(gain * amp, t + .012);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        o.connect(g).connect(ac.destination);
+        o.start(t); o.stop(t + dur + .05);
+      });
+    }
+    function chime() {
+      if (muted || reduceMotion()) return;
+      try {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        ctx = ctx || new AC();
+        if (ctx.state === 'suspended') ctx.resume();
+        const t = ctx.currentTime + .02;
+        // ding-dong-DING: E5, G5, then a bright C6 that rings longer
+        bell(ctx, 659.25, t, .45, .22);
+        bell(ctx, 783.99, t + .14, .45, .22);
+        bell(ctx, 1046.5, t + .30, 1.1, .26);
+      } catch (e) { }
+    }
+    function setMuted(m) {
+      muted = m;
+      try { localStorage.setItem(KEY, m ? '1' : '0'); } catch (e) { }
+    }
+    return { chime, setMuted, get muted() { return muted; } };
+  })();
+  function initSound() {
+    const btn = $('#muteBtn');
+    const paint = () => {
+      btn.setAttribute('aria-pressed', String(Sound.muted));
+      btn.textContent = Sound.muted ? '🔇' : '🔔';
+      btn.title = btn.ariaLabel = Sound.muted ? 'הפעלת צלילים' : 'השתקת צלילים';
+    };
+    btn.addEventListener('click', () => { Sound.setMuted(!Sound.muted); paint(); if (!Sound.muted) Sound.chime(); });
+    paint();
+    // The click is a user gesture, so the browser allows audio to start.
+    $('[data-screen="studio"] .actions a[href="#/price"]').addEventListener('click', Sound.chime);
+  }
+
   /* ================= ROUTER ================= */
   const FLOW = ['studio', 'price', 'artists', 'request'];
   let currentScreen = null;
@@ -705,7 +758,7 @@
 
     $$('.screen').forEach(s => s.classList.toggle('active', s.dataset.screen === name));
     $$('[data-nav]').forEach(a => {
-      const on = a.dataset.nav === name || (a.dataset.nav === 'studio' && FLOW.includes(name));
+      const on = a.dataset.nav === name || (a.dataset.nav === 'studio' && (name === 'price' || name === 'request'));
       a.classList.toggle('active', on); on ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current');
     });
     const idx = FLOW.indexOf(name);
@@ -720,6 +773,7 @@
     const c = $('#heroCanvas');
     compose(c.getContext('2d'), W, H);
   }
+  initSound();
   initStudio(); initPrice(); initArtists(); initRequest(); initArtist();
   renderStudioControls();
   drawHero();
