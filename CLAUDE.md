@@ -50,6 +50,19 @@ There is no build step, package manager, linter or test suite. Open `index.html`
 - `app.js`: one IIFE with these sections: DATA, STATE, HELPERS, LEAD STORAGE, DRAWING, STUDIO, PRICE, ARTISTS, REQUEST, ARTIST INBOX, ROUTER, INIT.
 - `README.md`: a short Hebrew description for the team.
 - `PRD.md`: the group's full product spec, in English.
+- `server.js`, `voice.js`, `package.json`, `.env.example`: the voice agent (branch `feature/voice-agent`, see below).
+
+## Branches
+
+`main` is the stable version, `dev` is the integration branch, and features branch off `dev` (for example `feature/voice-agent`). Merge features into `dev` first, and `dev` into `main` when it is tested.
+
+## Voice agent (OpenAI Realtime API)
+
+- **Run:** copy `.env.example` to `.env`, set `OPENAI_API_KEY`, run `npm start` (Node 18+, no dependencies) and open `http://localhost:8787`. Microphone access needs `localhost`, so don't open `index.html` from disk for voice.
+- **`server.js`:** serves only `index.html`, `app.js`, `styles.css`, `voice.js`, and `POST /api/session`, which asks OpenAI for a short-lived client secret (`/v1/realtime/client_secrets`) with the agent's Hebrew `INSTRUCTIONS`, model `gpt-realtime-2.1` and voice `marin`. It rejects other Host headers and requires an `X-Tatooa: 1` header. **The real key must never reach the browser or git:** `.env` is in `.gitignore`.
+- **`voice.js`:** builds a floating "שיחה קולית" button and panel, gets the secret, opens a WebRTC connection (mic track, `oai-events` data channel, SDP POST to `/v1/realtime/calls`), and shows the assistant's transcript from `response.output_audio_transcript.*` events.
+- **Not done yet:** tool calls (for example "go to the price screen"), user-speech transcripts and turn-detection settings. The OpenAI guides read so far (voice-agents, voice-webrtc, realtime) don't cover those event shapes, so check the Realtime client-events reference before adding them.
+- The agent's instructions repeat PRD rules (15% deposit, watermark lock-in, disclaimers). If `PRD.md` or the pricing changes, update `INSTRUCTIONS` in `server.js` too.
 
 ## How app.js works
 
