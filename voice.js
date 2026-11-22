@@ -13,6 +13,8 @@
     idle: 'לחצו על הכפתור ודברו בעברית.',
     live: 'מקשיבה… אפשר לדבר.',
     noMic: 'אין גישה למיקרופון. אשרו אותה בדפדפן ונסו שוב.',
+    micBlocked: 'המיקרופון חסום. פתחו את http://localhost:8787 ב-Chrome רגיל (לא בתצוגה מקדימה בתוך אפליקציה), לחצו על סמל המנעול ליד הכתובת, הגדירו מיקרופון ל"אפשר", ורעננו. אם זה לא עוזר: הגדרות Windows > פרטיות > מיקרופון.',
+    micMissing: 'לא נמצא מיקרופון במחשב. חברו מיקרופון או אוזניות ונסו שוב.',
     noServer: 'השרת המקומי לא ענה. הריצו npm start ופתחו את http://localhost:8787',
     noSecure: 'שיחה קולית עובדת רק מ-http://localhost:8787 (לא מפתיחת הקובץ ישירות).',
     failed: 'החיבור נכשל: '
@@ -89,7 +91,13 @@
         if (pc.connectionState === 'failed' || pc.connectionState === 'disconnected') stop(L.failed + 'החיבור נותק');
       };
       try { mic = await navigator.mediaDevices.getUserMedia({ audio: true }); }
-      catch { throw new Error(L.noMic); }
+      catch (err) {
+        console.error('getUserMedia failed:', err);
+        const why = err && err.name === 'NotFoundError' ? L.micMissing
+          : err && err.name === 'NotAllowedError' ? L.micBlocked
+          : L.noMic + ' (' + (err && err.name) + ')';
+        throw new Error(why);
+      }
       pc.addTrack(mic.getAudioTracks()[0], mic);
       dc = pc.createDataChannel('oai-events');
       dc.addEventListener('message', onEvent);
